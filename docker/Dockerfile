@@ -12,8 +12,8 @@ WORKDIR /rvizweb_ws
 ARG rvizweb_branch=master
 # Clone the from your own or other developer's forked Repo (Since the offical Repos does not support noetic)
 RUN git clone https://github.com/yxzhan/rvizweb.git src/rvizweb -b ${rvizweb_branch}
-RUN git clone https://github.com/witalij-s/interactive_marker_proxy.git -b noetic src/interactive_marker_proxy
-RUN rosdep install --from-paths src --ignore-src -r -y
+# RUN git clone https://github.com/witalij-s/interactive_marker_proxy.git -b noetic src/interactive_marker_proxy
+RUN rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y --os=ubuntu:xenial
 RUN . /opt/ros/noetic/setup.sh && catkin_make install
 
 # Clear apt cache.

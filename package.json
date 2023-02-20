@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/osrf/rvizweb#readme",
   "devDependencies": {
-    "bower": "^1.8.8",
-    "polymer-cli": "^1.9.7"
+    "bower": "^1.8.14",
+    "polymer-cli": "^1.9.11"
   }
 }
