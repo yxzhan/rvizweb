@@ -22,6 +22,6 @@
   <exec_depend>roswww</exec_depend>
   <exec_depend>tf2_web_republisher</exec_depend>
   <exec_depend>web_video_server</exec_depend>
-  <exec_depend>python-cbor2</exec_depend>
+  <exec_depend>cbor2</exec_depend>
 
 </package>
