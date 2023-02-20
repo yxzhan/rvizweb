@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-IMAGE=rvizweb
+# IMAGE=rvizweb:noetic
 
-docker run -d --privileged --rm --name "sausy/rvizweb" -t "amd64" --network="host" "${IMAGE}"
+docker run -d --privileged -t -rm --network="host" rvizweb:noetic
