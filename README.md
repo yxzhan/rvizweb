@@ -34,7 +34,7 @@ To run `RVizWeb` inside a container use the scripts to build and run the applica
 
 The network will be shared with the host by default.
 
-## Quickstart (Outupdated)
+## Quickstart (Out-of-date)
 
 1. Create a directory for your catkin workspace:
 
