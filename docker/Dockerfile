@@ -2,8 +2,7 @@ FROM osrf/ros:noetic-desktop-full
 
 # Basic tools and dependencies and nodejs LTS PPA.
 RUN apt update && apt install -y curl git python3-pip 
-# RUN apt install -y vim
-
+RUN apt install -y vim
 # Install Nodejs (May need to update the version)
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs
 RUN npm install -g npm
@@ -23,6 +22,8 @@ RUN ln -s /rvizweb_ws/build/rvizweb/www /rvizweb_ws/install/share/rvizweb/
 # Clear apt cache.
 RUN apt clean
 
-EXPOSE 8000-10000
+RUN echo "source /rvizweb_ws/install/setup.bash" >> /root/.bashrc
+
+# EXPOSE 8000-10000
 # CMD ["/bin/bash"]
 ENTRYPOINT ["/bin/bash", "-c", "source /rvizweb_ws/install/setup.bash && roslaunch rvizweb rvizweb.launch"]
