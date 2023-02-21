@@ -10,7 +10,31 @@ This project makes use of the following:
 * @RobotWebTools's [rosbridge_server](https://github.com/RobotWebTools/rosbridge_suite)
   and [tf2_web_republisher](https://github.com/RobotWebTools/tf2_web_republisher)
 
-## Quickstart
+
+
+## RVizWeb in a Docker container
+
+To run `RVizWeb` inside a container use the scripts to build and run the application:
+
+1. Clone the repository:
+
+        git clone https://github.com/yxzhan/rvizweb.git
+
+2. Build the docker image:
+
+        ~/rvizweb/docker/build.sh
+
+3. Run the container:
+
+        ~/rvizweb/docker/run.sh
+        
+4. Open the site on the browser
+
+    http://localhost:8001/rvizweb/www/index.html
+
+The network will be shared with the host by default.
+
+## Quickstart (Outupdated)
 
 1. Create a directory for your catkin workspace:
 
@@ -158,24 +182,3 @@ The easiest way of generating a configuration file is the following:
 - Editing `config/configuration.json` won't work if the application is not reinstalled; providing a separate custom file is recommended.
 - Empty or undefined fields for `globalOptions` will be set to default.
 
-## RVizWeb in a Docker container
-
-To run `RVizWeb` inside a container use the scripts to build and run the application:
-
-1. Clone the repository:
-
-        git clone https://github.com/osrf/rvizweb ~/rvizweb
-
-1. Build the docker image:
-
-        ~/rvizweb/docker/build.sh
-
-1. Run the container:
-
-        ~/rvizweb/docker/run.sh
-
-1. Once inside the container, launch `RVizWeb`:
-
-        roslaunch rvizweb rvizweb.launch
-
-The network will be shared with the host by default.
