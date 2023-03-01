@@ -1,8 +1,8 @@
 {
   "globalOptions": {
-    "background": "#ffffff",
+    "background": "#303030",
     "colladaLoader": "collada2",
-    "fixedFrame": "/world"
+    "fixedFrame": "/map"
   },
   "sidebarOpened": true,
   "displays": []
