@@ -14,12 +14,11 @@ ARG rvizweb_branch=master
 RUN git clone https://github.com/yxzhan/rvizweb.git src/rvizweb -b ${rvizweb_branch}
 RUN pip install cbor2
 RUN rosdep install --from-paths src --ignore-src -r -y
-RUN . /opt/ros/noetic/setup.sh && catkin_make install
+RUN . /opt/ros/noetic/setup.sh && catkin_make
 # Clear apt cache.
 RUN apt clean
 
-RUN echo "source /rvizweb_ws/install/setup.bash" >> /root/.bashrc
+RUN echo "source /rvizweb_ws/devel/setup.bash" >> /root/.bashrc
 
 # EXPOSE 8000-10000
-# CMD ["/bin/bash"]
-ENTRYPOINT ["/bin/bash", "-c", "source /rvizweb_ws/install/setup.bash && roslaunch rvizweb rvizweb.launch"]
+ENTRYPOINT ["/bin/bash", "-c", "source /rvizweb_ws/devel/setup.bash && roslaunch rvizweb rvizweb.launch"]
