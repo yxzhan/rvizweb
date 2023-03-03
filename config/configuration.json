@@ -18,12 +18,59 @@
     },
     {
       "isShown": true,
+      "name": "Robot model",
+      "options": {
+        "param": "robot_description"
+      },
+      "type": "urdf"
+    },
+    {
+      "isShown": true,
       "name": "Kitchen model",
       "options": {
-        "param": "kitchen_description"
+        "param": "kitchen_description",
+        "tfPrefix": "iai_kitchen"
       },
-      "tfPrefix": "iai_kitchen",
       "type": "urdf"
+    },
+    {
+      "isShown": true,
+      "name": "cram_location_marker",
+      "options": {
+        "topic": "/cram_location_marker"
+      },
+      "type": "markers"
+    },
+    {
+      "isShown": true,
+      "name": "visualization_marker",
+      "options": {
+        "topic": "/visualization_marker"
+      },
+      "type": "markers"
+    },
+    {
+      "isShown": true,
+      "name": "cram_location_costmap",
+      "options": {
+        "topic": "/cram_location_costmap"
+      },
+      "type": "markerArray"
+    },
+    {
+      "isShown": true,
+      "name": "cram_location_occupancy_grid",
+      "options": {
+        "color": {
+          "r": 255,
+          "g": 255,
+          "b": 255
+        },
+        "continuous": true,
+        "opacity": "1",
+        "topic": "/cram_location_occupancy_grid"
+      },
+      "type": "occupancyGrid"
     }
   ]
 }
