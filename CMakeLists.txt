@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.2)
 project(rvizweb)
 
 find_package(catkin REQUIRED COMPONENTS
@@ -31,17 +31,23 @@ execute_process(
   COMMAND npm run build
 )
 
-install(
-  DIRECTORY
-    launch
-    ${CMAKE_CURRENT_BINARY_DIR}/www/build/www
-  DESTINATION
-    ${CATKIN_PACKAGE_SHARE_DESTINATION}
+# Create syslink from Build/www to Src to fix 404 issue
+execute_process(
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+  COMMAND ln -s ${CMAKE_CURRENT_BINARY_DIR}/www ${CMAKE_CURRENT_SOURCE_DIR}/www
 )
 
-install(
-  DIRECTORY
-    config
-  DESTINATION
-    ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)
+# install(
+#   DIRECTORY
+#     launch
+#     ${CMAKE_CURRENT_BINARY_DIR}/www/build/www
+#   DESTINATION
+#     ${CATKIN_PACKAGE_SHARE_DESTINATION}
+# )
+
+# install(
+#   DIRECTORY
+#     config
+#   DESTINATION
+#     ${CATKIN_PACKAGE_SHARE_DESTINATION}
+# )
