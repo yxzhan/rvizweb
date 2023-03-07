@@ -4,7 +4,7 @@
     "colladaLoader": "collada2",
     "fixedFrame": "/map"
   },
-  "sidebarOpened": true,
+  "sidebarOpened": false,
   "displays": [
     {
       "isShown": true,
