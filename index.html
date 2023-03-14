@@ -34,7 +34,7 @@
         if (baseUrl) {
           const wsUrl = new URL(baseUrl);
           wsUrl.protocol = wsUrl.protocol === 'https:' ? 'wss:' : 'ws'
-          websocket.url = wsUrl + 'proxy/9090'
+          websocket.url = wsUrl.href + 'proxy/9090'
         }
         function onWsError (evt) {
           console.log(websocket.ros.socket.url, evt.type)
