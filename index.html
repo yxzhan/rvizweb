@@ -28,9 +28,26 @@
         var websocket = document.getElementById('websocket');
         var rviz = document.getElementById('rviz');
 
+        // Set default ws url according to URL params
+        // A feature for jupyterhub or other service not run locally or on root path
+        const baseUrl = new URLSearchParams(document.location.search).get("baseurl");
+        if (baseUrl) {
+          const wsUrl = new URL(baseUrl);
+          wsUrl.protocol = wsUrl.protocol === 'https:' ? 'wss:' : 'ws'
+          websocket.url = wsUrl + 'proxy/9090'
+        }
+        function onWsError (evt) {
+          console.log(websocket.ros.socket.url, evt.type)
+          // Todos: Add reconnect feature or display connection status
+          if (evt.type === 'close') {
+            
+          }
+        }
+        websocket.addEventListener('error', onWsError);
+        websocket.addEventListener('close', onWsError);
+        
         websocket.addEventListener('connection', function() {
-          console.log('Connected to the websocket server.');
-          console.log(websocket.ros);
+          console.log('Connected to the websocket server.', websocket.ros.socket.url);
           rviz.ros = websocket.ros;
         });
         websocket.connect();
