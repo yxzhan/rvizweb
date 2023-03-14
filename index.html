@@ -53,6 +53,7 @@
         websocket.connect();
 
         rviz.addEventListener('websocket-url-changed', function(evt) {
+          if (websocket.url === evt.detail.value) return false
           console.log(evt.detail.value);
           websocket.url = evt.detail.value;
           websocket.connect();
