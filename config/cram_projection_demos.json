@@ -1,6 +1,6 @@
 {
   "globalOptions": {
-    "background": "#303030",
+    "background": "#ececec",
     "colladaLoader": "collada2",
     "fixedFrame": "/map"
   },
@@ -11,13 +11,13 @@
       "name": "Grid",
       "options": {
         "cellSize": "1",
-        "color": "#cccccc",
+        "color": "#333333",
         "numCells": "10"
       },
       "type": "grid"
     },
     {
-      "isShown": false,
+      "isShown": true,
       "name": "Robot model",
       "options": {
         "param": "robot_description"
@@ -25,7 +25,7 @@
       "type": "urdf"
     },
     {
-      "isShown": false,
+      "isShown": true,
       "name": "Kitchen model",
       "options": {
         "param": "kitchen_description",

@@ -33,7 +33,8 @@
   <!-- <arg name="rgb_topic" default="/camera/rgb/image_raw"/> -->
 
   <!-- Configuration. -->
-  <arg name="config_file" default="$(find rvizweb)/config/configuration.json"/>
+  <arg name="config_name" default="configuration"/>
+  <arg name="config_file" default="$(find rvizweb)/config/$(arg config_name).json"/>
 
   <param name="/rvizweb/global_config" type="str" textfile="$(arg config_file)"/>
 
