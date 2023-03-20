@@ -1,0 +1,15 @@
+[
+  {
+    "name": "rvizweb",
+    "title": "Rvizweb",
+    "icon": "proxy/8001/rvizweb/webapps/rvizweb/icon.svg",
+    "url": "proxy/8001/rvizweb/www/index.html",
+    "mode": "split-right"
+  },
+  {
+    "name": "rosgraph",
+    "title": "Ros Graph",
+    "icon": "proxy/8001/rvizweb/webapps/ros-node-graph/icon.svg",
+    "url": "proxy/8001/rvizweb/webapps/ros-node-graph/build/index.html"
+  }
+]

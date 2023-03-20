@@ -15,7 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "threejs": "https://github.com/mrdoob/three.js.git",
+    "threejs": "https://raw.githubusercontent.com/mrdoob/three.js/master/build/three.min.js",
     "eventemitter2": "https://github.com/EventEmitter2/EventEmitter2.git",
     "ros-rviz": "https://github.com/yxzhan/polymer-ros-rviz.git",
     "web-animations-js": "^2.3.1"

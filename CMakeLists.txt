@@ -13,29 +13,33 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-# Copy needed files to www build folder
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/www)
-configure_file(package.json www/package.json COPYONLY)
-configure_file(index.html www/index.html COPYONLY)
-configure_file(bower.json www/bower.json COPYONLY)
-
-# Install webapp build tools
+# Todos: Make it list the directories under webapps/ and build apps with one make command
+# Install rvizweb
 execute_process(
-  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/www
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/webapps/rvizweb
   COMMAND npm install
+)
+execute_process(
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/webapps/rvizweb
   COMMAND npm run build
 )
-
-# Create syslink from Build/www to Src to fix 404 issue
-execute_process(
-  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-  COMMAND ln -s ${CMAKE_CURRENT_BINARY_DIR}/www ${CMAKE_CURRENT_SOURCE_DIR}/www
-)
-
 # Build other webapps
 execute_process(
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/jupyter-apps/ros-node-graph
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/webapps/ros-node-graph
   COMMAND npm install
+)
+execute_process(
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/webapps/ros-node-graph
   COMMAND npm run build
 )
 
+# Todos: optimize the delete command
+execute_process(
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/webapps
+  COMMAND rm -rf rvizweb/bower_components rvizweb/node_modules ros-node-graph/node_modules
+)
+
+execute_process(
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  COMMAND ln -s ${CMAKE_CURRENT_SOURCE_DIR}/webapps/rvizweb/build/www ${CMAKE_CURRENT_SOURCE_DIR}/www
+)

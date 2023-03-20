@@ -1,9 +1,19 @@
 {
   "globalOptions": {
     "background": "#303030",
-    "colladaLoader": "collada2",
-    "fixedFrame": "/map"
+    "fixedFrame": "/base_link"
   },
   "sidebarOpened": true,
-  "displays": []
+  "displays": [
+    {
+      "isShown": true,
+      "name": "Grid",
+      "options": {
+        "cellSize": "1",
+        "color": "#cccccc",
+        "numCells": "10"
+      },
+      "type": "grid"
+    }
+  ]
 }
