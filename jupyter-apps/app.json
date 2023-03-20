@@ -10,6 +10,6 @@
     "name": "rosgraph",
     "title": "Ros Graph",
     "icon": "proxy/8001/rvizweb/jupyter-apps/icons/Ros_logo.svg",
-    "url": "proxy/8001/rvizweb/ros-node-graph/index.html"
+    "url": "proxy/8001/rvizweb/jupyter-apps/ros-node-graph/build/index.html"
   }
 ]

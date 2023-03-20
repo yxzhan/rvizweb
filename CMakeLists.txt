@@ -23,11 +23,6 @@ configure_file(bower.json www/bower.json COPYONLY)
 execute_process(
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/www
   COMMAND npm install
-)
-
-# Build the webapp with bower and polymer
-execute_process(
-  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/www
   COMMAND npm run build
 )
 
@@ -37,17 +32,10 @@ execute_process(
   COMMAND ln -s ${CMAKE_CURRENT_BINARY_DIR}/www ${CMAKE_CURRENT_SOURCE_DIR}/www
 )
 
-# install(
-#   DIRECTORY
-#     launch
-#     ${CMAKE_CURRENT_BINARY_DIR}/www/build/www
-#   DESTINATION
-#     ${CATKIN_PACKAGE_SHARE_DESTINATION}
-# )
+# Build other webapps
+execute_process(
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/jupyter-apps/ros-node-graph
+  COMMAND npm install
+  COMMAND npm run build
+)
 
-# install(
-#   DIRECTORY
-#     config
-#   DESTINATION
-#     ${CATKIN_PACKAGE_SHARE_DESTINATION}
-# )
