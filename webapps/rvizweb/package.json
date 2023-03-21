@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "description": "RVizWeb: RViz on the browser",
   "scripts": {
-    "build": "bower install --allow-root && polymer build --name www"
+    "build": "bower install --allow-root && polymer build --name www",
+    "dev": "cd ./build/www/bower_components && rm -rf ros-rviz && ln -s ../../../../../../polymer-ros-rviz ./ros-rviz"
   },
   "repository": {
     "type": "git",
