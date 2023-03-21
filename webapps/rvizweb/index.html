@@ -60,6 +60,26 @@
         });
       });
     </script>
+    <script>
+      // Add FPS monitor
+      (function(){
+        var script=document.createElement('script');
+        script.onload = function(){
+          var stats=new Stats();
+          // stats.dom.style.top='auto';
+          stats.dom.style.left='auto';
+          stats.dom.style.right='0';
+          // stats.dom.style.bottom='0';
+          document.body.appendChild(stats.dom);
+          requestAnimationFrame(function loop(){
+            stats.update();
+            requestAnimationFrame(loop)
+          });
+        };
+        script.src='https://mrdoob.github.io/stats.js/build/stats.min.js';
+        document.head.appendChild(script);
+      })()
+    </script>
 
 </html>
 
