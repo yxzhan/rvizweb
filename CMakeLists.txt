@@ -41,5 +41,5 @@ execute_process(
 
 execute_process(
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  COMMAND ln -s ${CMAKE_CURRENT_SOURCE_DIR}/webapps/rvizweb/build/www ${CMAKE_CURRENT_SOURCE_DIR}/www
+  COMMAND ln -s ./webapps/rvizweb/build/www ./www
 )

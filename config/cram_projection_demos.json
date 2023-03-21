@@ -4,6 +4,29 @@
     "colladaLoader": "collada2",
     "fixedFrame": "/map"
   },
+  "viewerOptions": {
+    "camera": {
+      "position": {
+        "x": -8.8,
+        "y": -3,
+        "z": 5.7
+      }
+    },
+    "cameraControls": {
+      "center": {
+        "x": -1,
+        "y": 1,
+        "z": 0
+      }
+    },
+    "directionalLight": {
+      "position": {
+        "x": -3,
+        "y": -3,
+        "z": 5
+      }
+    }
+  },
   "sidebarOpened": false,
   "displays": [
     {
