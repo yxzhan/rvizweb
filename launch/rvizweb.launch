@@ -36,7 +36,11 @@
   <arg name="config_name" default="configuration"/>
   <arg name="config_file" default="$(find rvizweb)/config/$(arg config_name).json"/>
 
-  <param name="/rvizweb/global_config" type="str" textfile="$(arg config_file)"/>
+  <!-- <param name="/rvizweb/global_config" type="str" textfile="$(arg config_file)"/> -->
+  <include file="$(find rvizweb)/launch/update_config.launch">
+    <arg name="config_name" value="$(arg config_name)" />
+    <arg name="config_file" value="$(arg config_file)" />
+  </include>
 
   <!-- Websocket bridge -->
   <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch">

@@ -1,6 +1,6 @@
 {
   "globalOptions": {
-    "background": "#ececec",
+    "background": "#303030",
     "colladaLoader": "collada2",
     "fixedFrame": "/map"
   },
@@ -34,7 +34,7 @@
       "name": "Grid",
       "options": {
         "cellSize": "1",
-        "color": "#333333",
+        "color": "#eeeeee",
         "numCells": "10"
       },
       "type": "grid"

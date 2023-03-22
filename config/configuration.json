@@ -1,6 +1,6 @@
 {
   "globalOptions": {
-    "background": "#303030",
+    "background": "#ececec",
     "fixedFrame": "/base_link"
   },
   "sidebarOpened": true,
@@ -10,7 +10,7 @@
       "name": "Grid",
       "options": {
         "cellSize": "1",
-        "color": "#cccccc",
+        "color": "#888888",
         "numCells": "10"
       },
       "type": "grid"
