@@ -1,6 +1,6 @@
 {
   "globalOptions": {
-    "background": "#303030",
+    "background": "#888888",
     "colladaLoader": "collada2",
     "fixedFrame": "/map"
   },
@@ -35,7 +35,7 @@
       "options": {
         "cellSize": "1",
         "color": "#eeeeee",
-        "numCells": "10"
+        "numCells": "20"
       },
       "type": "grid"
     },
@@ -58,17 +58,17 @@
     },
     {
       "isShown": true,
-      "name": "cram_location_marker",
+      "name": "Kitchen Objects",
       "options": {
-        "topic": "/cram_location_marker"
+        "topic": "/visualization_marker"
       },
       "type": "markers"
     },
     {
       "isShown": true,
-      "name": "visualization_marker",
+      "name": "cram_location_marker",
       "options": {
-        "topic": "/visualization_marker"
+        "topic": "/cram_location_marker"
       },
       "type": "markers"
     },
