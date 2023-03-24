@@ -4,7 +4,7 @@ version: '3'
 services:  
   rvizweb:
     image: "rvizweb:noetic"
-    container_name: rvizweb_with_pr2
+    container_name: rvizweb
     # for windows and mac, use 'network_mode: bridge'
     network_mode: host  
     privileged: true

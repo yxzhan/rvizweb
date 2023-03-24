@@ -17,20 +17,20 @@
   <arg name="tf" default="true"/>
 
   <!-- Set to false if you don't want to use interactive markers. -->
-  <!-- <arg name="interactive_markers" default="false"/> -->
+  <arg name="interactive_markers" default="false"/>
   <!-- Target frame for interactive markers. -->
-  <!-- <arg name="interactive_markers_target_frame" default="/base_link"/> -->
+  <arg name="interactive_markers_target_frame" default="/base_link"/>
   <!-- Topic for interactive markers. -->
-  <!-- <arg name="interactive_markers_topic" default="/basic_controls"/> -->
+  <arg name="interactive_markers_topic" default="/basic_controls"/>
 
   <!-- Set to true if you want depth cloud support. -->
-  <!-- <arg name="depth_cloud" default="false"/> -->
+  <arg name="depth_cloud" default="false"/>
   <!-- Port for visualizing video streams. -->
-  <!-- <arg name="video_port" default="9999"/> -->
+  <arg name="video_port" default="9999"/>
   <!-- Depth image topic for depthcloud_encoder. -->
-  <!-- <arg name="depth_topic" default="/camera/depth/image_raw"/> -->
+  <arg name="depth_topic" default="/camera/depth/image_raw"/>
   <!-- RGB image topic for depthcloud_encoder. -->
-  <!-- <arg name="rgb_topic" default="/camera/rgb/image_raw"/> -->
+  <arg name="rgb_topic" default="/camera/rgb/image_raw"/>
 
   <!-- Configuration. -->
   <arg name="config_name" default="configuration"/>
@@ -59,15 +59,15 @@
   </group>
   
   <!-- Interactive markers -->
-  <!-- <group if="$(arg interactive_markers)">
+  <group if="$(arg interactive_markers)">
     <node pkg="interactive_marker_proxy" type="proxy" name="interactive_marker_proxy">
       <remap from="target_frame" to="$(arg interactive_markers_target_frame)" />
       <remap from="topic_ns" to="$(arg interactive_markers_topic)" />
     </node>
-  </group> -->
+  </group>
 
   <!-- Depth cloud -->
-  <!-- <group if="$(arg depth_cloud)">
+  <group if="$(arg depth_cloud)">
     <node pkg="web_video_server" type="web_video_server" name="web_video_server">
       <param name="type" value="vp8"/>
       <param name="port" value="$(arg video_port)"/>
@@ -76,6 +76,6 @@
       <param name="depth" value="$(arg depth_topic)"/>
       <param name="rgb" value="$(arg rgb_topic)"/>
     </node>
-  </group> -->
+  </group>
   
 </launch>

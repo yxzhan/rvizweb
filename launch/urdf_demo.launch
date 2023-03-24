@@ -1,6 +1,6 @@
 <launch>
   <include file="$(find rvizweb)/launch/rvizweb.launch">
-    <arg name="config_name" value="demo" />
+    <arg name="config_name" value="urdf_demo" />
   </include>
 
   <param name="robot_description"
@@ -11,8 +11,8 @@
     name="robot_state_publisher" output="screen">
   </node>
 
-  <!-- <node pkg="joint_state_publisher" type="joint_state_publisher"
+  <node pkg="joint_state_publisher" type="joint_state_publisher"
         name="joint_state_publisher" output="screen">
     <param name="rate" value="25"/>
-  </node> -->
+  </node>
 </launch>
