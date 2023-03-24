@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>rvizweb</name>
-  <version>0.0.0</version>
+  <version>0.1.0</version>
   <description>RVizWeb: RViz on the browser</description>
 
   <maintainer email="louise@openrobotics.org">Louise Poubel</maintainer>

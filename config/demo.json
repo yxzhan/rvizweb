@@ -17,6 +17,14 @@
     },
     {
       "isShown": true,
+      "name": "Interactive Markers",
+      "options": {
+        "topic": "/basic_controls"
+      },
+      "type": "interactiveMarkers"
+    },
+    {
+      "isShown": false,
       "name": "Robot model",
       "options": {
         "param": "robot_description",

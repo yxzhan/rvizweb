@@ -32,5 +32,5 @@ RUN echo "source /rvizweb_ws/devel/setup.bash" >> /root/.bashrc
 
 ENTRYPOINT ["/bin/bash", "-c", \
   "source /rvizweb_ws/devel/setup.bash && \
-  roslaunch rvizweb rvizweb.launch interactive_markers:=true \
+  roslaunch rvizweb demo.launch \
 "]
