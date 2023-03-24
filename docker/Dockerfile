@@ -9,7 +9,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo ap
 # Clone Rvizweb source code
 WORKDIR /rvizweb_ws
 ARG RVIZWEB_REPO=https://github.com/yxzhan/rvizweb.git
-ARG RVIZWEB_BRANCH=master
+ARG RVIZWEB_BRANCH=0.1.0
 RUN git clone ${RVIZWEB_REPO} src/rvizweb -b ${RVIZWEB_BRANCH}
 
 # --- Optional, for demostration---

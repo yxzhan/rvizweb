@@ -24,11 +24,14 @@ To run `RVizWeb` inside a container use the following scripts to build and run t
 
         git clone https://github.com/yxzhan/rvizweb.git
 
-2. Build the docker image:
+2. Build the docker image or pull a pre-built image from dockerhub :
 
         ~/rvizweb/docker/build.sh
+        # Or Pull
+        docker pull yxzhan/rvizweb:noetic-0.1.0
 
-3. Run the container:
+3. Change the image name in `~/rvizweb/docker/docker-compose.yml`.
+4. Run the container:
 
         ~/rvizweb/docker/run.sh
 

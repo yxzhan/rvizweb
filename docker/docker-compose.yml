@@ -3,7 +3,7 @@
 version: '3'
 services:  
   rvizweb:
-    image: "rvizweb:noetic"
+    image: "rvizweb:noetic-0.1.0"
     container_name: rvizweb
     # for windows and mac, use 'network_mode: bridge'
     network_mode: host  
