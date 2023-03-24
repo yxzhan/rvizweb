@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-docker run --network="host" --rm --privileged -it "rvizweb:noetic"
+xhost +local:docker
+
+docker-compose up
+
+xhost -local:docker

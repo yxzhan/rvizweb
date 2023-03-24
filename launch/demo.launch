@@ -11,8 +11,8 @@
     name="robot_state_publisher" output="screen">
   </node>
 
-  <node pkg="joint_state_publisher" type="joint_state_publisher"
-        name="joint_state_publisher" output="screen">
+  <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"
+        name="joint_state_publisher_gui" output="screen">
     <param name="rate" value="25"/>
   </node>
 </launch>
