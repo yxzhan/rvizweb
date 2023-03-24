@@ -1,6 +1,7 @@
 <launch>
   <include file="$(find rvizweb)/launch/rvizweb.launch">
     <arg name="config_name" value="demo" />
+    <arg name="interactive_markers" value="true" />
   </include>
 
   <param name="robot_description"

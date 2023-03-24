@@ -56,7 +56,7 @@ To run `RVizWeb` inside a container use the following scripts to build and run t
 
 9. You should see a pink box show up on the site.
 
-**Notes:**: The container will share with the host network by default. And with command `xhost +local:docker`, launching gui applications (e.g., rqt_graph, rviz) inside the container should be able to X-forward to host system.
+**Notes:** The container will share with the host network by default. And with command `xhost +local:docker`, launching gui applications (e.g., rqt_graph, rviz) inside the container should be able to X-forward to host system.
 
 ## Option 2: Install to local environment
 ### Prerequisites
@@ -97,14 +97,6 @@ To run `RVizWeb` inside a container use the following scripts to build and run t
     Main RVizweb: http://localhost:8001/rvizweb/www/index.html
 
     Ros node Graph: http://localhost:8001/rvizweb/webapps/ros-node-graph/build/index.html
-
-7. Let's try an example display to check everything is working. On the UI, click on the `+` and choose "Markers".
-
-8. Now open a new terminal and publish the following marker:
-
-        rostopic pub /visualization_marker visualization_msgs/Marker '{header: {frame_id: "base_link"}, id: 1, type: 1, action: 0, pose: {position: {x: 0., y: 0.2, z: 0.}, orientation: {x: 0.3, y: 0.2, z: 0.52, w: 0.85}}, scale: {x: 0.2, y: 0.3, z: 0.1}, color: {r: 1., g: 0., b: 1., a: 0.3}, lifetime: 50000000000}'
-
-9. You should see a pink box show up on the site.
 
 ## Viewing URDF
 
