@@ -9,9 +9,10 @@ RUN npm install -g npm
 
 # Install rvizweb.
 WORKDIR /rvizweb_ws
-ARG rvizweb_branch=master
+ARG RVIZWEB_REPO=https://github.com/yxzhan/rvizweb.git
+ARG RVIZWEB_BRANCH=master
 # Clone the from your own or other developer's forked Repo (Since the offical Repos does not support noetic)
-RUN git clone https://github.com/yxzhan/rvizweb.git src/rvizweb -b ${rvizweb_branch}
+RUN git clone ${RVIZWEB_REPO} src/rvizweb -b ${RVIZWEB_BRANCH}
 RUN pip install cbor2
 RUN rosdep install --from-paths src --ignore-src -r -y
 RUN . /opt/ros/noetic/setup.sh && catkin_make
@@ -20,5 +21,4 @@ RUN apt clean
 
 RUN echo "source /rvizweb_ws/devel/setup.bash" >> /root/.bashrc
 
-# EXPOSE 8000-10000
-ENTRYPOINT ["/bin/bash", "-c", "source /rvizweb_ws/devel/setup.bash && roslaunch rvizweb rvizweb.launch"]
+ENTRYPOINT ["/bin/bash", "-c", "source /rvizweb_ws/devel/setup.bash && roslaunch rvizweb demo.launch"]

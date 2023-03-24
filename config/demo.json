@@ -1,0 +1,28 @@
+{
+  "globalOptions": {
+    "background": "#ececec",
+    "fixedFrame": "/base_link"
+  },
+  "sidebarOpened": true,
+  "displays": [
+    {
+      "isShown": true,
+      "name": "Grid",
+      "options": {
+        "cellSize": "1",
+        "color": "#888888",
+        "numCells": "10"
+      },
+      "type": "grid"
+    },
+    {
+      "isShown": true,
+      "name": "Robot model",
+      "options": {
+        "param": "robot_description",
+        "tfPrefix": ""
+      },
+      "type": "urdf"
+    }
+  ]
+}

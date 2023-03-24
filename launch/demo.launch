@@ -1,0 +1,19 @@
+<launch>
+  <include file="$(find rvizweb)/launch/rvizweb.launch">
+    <arg name="config_name" value="demo" />
+  </include>
+
+  <param name="robot_description"
+        command="$(find xacro)/xacro
+                '$(find pr2_description)/robots/pr2.urdf.xacro'"/>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher"
+    name="robot_state_publisher" output="screen">
+  </node>
+
+  <node pkg="joint_state_publisher" type="joint_state_publisher"
+        name="joint_state_publisher" output="screen">
+    <param name="rate" value="25"/>
+    <param name="use_gui" value="True"/>
+  </node>
+</launch>
