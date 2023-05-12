@@ -3,7 +3,7 @@
     "background": "#ececec",
     "fixedFrame": "/base_link"
   },
-  "sidebarOpened": true,
+  "sidebarOpened": false,
   "displays": [
     {
       "isShown": true,
