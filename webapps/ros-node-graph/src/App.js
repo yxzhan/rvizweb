@@ -16,7 +16,8 @@ function App() {
   }
   function handleClick(e) {
     e.preventDefault();
-    refreshGraph(ros)
+    location.reload();
+    // refreshGraph(ros)
   }
 
   return (
@@ -73,6 +74,10 @@ function createRos(url) {
   let ros = new ROSLIB.Ros({url})
   ros.on('error', error => { 
     console.log( error )
+  })
+  ros.on('close', evt => { 
+    console.log( evt )
+    setTimeout(_ => {websocket.connect();}, 10000);
   })
   ros.on('connection', evt => {
     console.log('Connection made!');
