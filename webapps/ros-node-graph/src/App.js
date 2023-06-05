@@ -16,8 +16,11 @@ function App() {
   }
   function handleClick(e) {
     e.preventDefault();
-    location.reload();
-    // refreshGraph(ros)
+    if (!ros.isConnected) {
+      window.location.reload();
+    } else {
+      refreshGraph(ros)
+    }
   }
 
   return (
@@ -77,7 +80,7 @@ function createRos(url) {
   })
   ros.on('close', evt => { 
     console.log( evt )
-    setTimeout(_ => {websocket.connect();}, 10000);
+    setTimeout(_ => {ros.connect(url);}, 5000);
   })
   ros.on('connection', evt => {
     console.log('Connection made!');
