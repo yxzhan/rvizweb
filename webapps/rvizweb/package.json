@@ -4,7 +4,7 @@
   "description": "RVizWeb: RViz on the browser",
   "scripts": {
     "build": "bower install --allow-root && polymer build --name www",
-    "dev": "cd ./build/www/bower_components && rm -rf ros-rviz && ln -s ../../../../../../polymer-ros-rviz ./ros-rviz"
+    "dev": "rm -rf ../../www && ln -s ./webapps/rvizweb ../../www && cd ./build/www/bower_components && rm -rf ros-rviz && ln -s ../../../../../../polymer-ros-rviz ./ros-rviz"
   },
   "repository": {
     "type": "git",

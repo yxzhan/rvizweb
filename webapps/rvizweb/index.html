@@ -27,6 +27,7 @@
 
         var websocket = document.getElementById('websocket');
         var rviz = document.getElementById('rviz');
+        var reconnectTimer = undefined
 
         // Set default ws url according to URL params
         // A feature for jupyterhub or other service not run locally or on root path
@@ -37,10 +38,12 @@
           websocket.url = wsUrl.href + 'proxy/9090'
         }
         function onWsError (evt) {
-          console.log(websocket.ros.socket.url, evt.type)
+          console.log(websocket.ros.socket.url, evt)
           // Todos: Add reconnect feature or display connection status
           if (evt.type === 'close') {
-            setTimeout(_ => {websocket.connect();}, 10000);
+            reconnectTimer = setTimeout(_ => {
+              websocket.connect();
+            }, 2000);
           }
         }
         websocket.addEventListener('error', onWsError);
@@ -48,13 +51,14 @@
         
         websocket.addEventListener('connection', function() {
           console.log('Connected to the websocket server.', websocket.ros.socket.url);
+          if (reconnectTimer) clearInterval(reconnectTimer)
           rviz.ros = websocket.ros;
         });
         websocket.connect();
 
         rviz.addEventListener('websocket-url-changed', function(evt) {
+          console.log('websocket-url-changed', evt.detail.value);
           if (websocket.url === evt.detail.value) return false
-          console.log(evt.detail.value);
           websocket.url = evt.detail.value;
           websocket.connect();
         });
@@ -66,10 +70,10 @@
         var script=document.createElement('script');
         script.onload = function(){
           var stats=new Stats();
-          // stats.dom.style.top='auto';
+          stats.dom.style.top='auto';
           stats.dom.style.left='auto';
           stats.dom.style.right='0';
-          // stats.dom.style.bottom='0';
+          stats.dom.style.bottom='0';
           document.body.appendChild(stats.dom);
           requestAnimationFrame(function loop(){
             stats.update();
