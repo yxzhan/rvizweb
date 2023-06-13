@@ -1,6 +1,6 @@
 {
   "globalOptions": {
-    "background": "#ececec",
+    "background": "#333333",
     "fixedFrame": "/base_link"
   },
   "sidebarOpened": false,
