@@ -37,31 +37,35 @@
           wsUrl.protocol = wsUrl.protocol === 'https:' ? 'wss:' : 'ws'
           websocket.url = wsUrl.href + 'proxy/9090'
         }
-        function onWsError (evt) {
+
+        function wsEventHandler (evt) {
           console.log(websocket.ros.socket.url, evt)
-          // Todos: Add reconnect feature or display connection status
-          if (evt.type === 'close') {
-            reconnectTimer = setTimeout(_ => {
-              websocket.connect();
-            }, 2000);
+          switch (evt.type) {
+            case 'close':
+              clearInterval(reconnectTimer)
+              reconnectTimer = setTimeout(_ => {
+                websocket.connect();
+              }, 3000);
+              break
+            case 'connection':
+              clearInterval(reconnectTimer)
+              rviz.ros = websocket.ros;
+              break
+            default:
+              console.log(evt.type)
           }
         }
-        websocket.addEventListener('error', onWsError);
-        websocket.addEventListener('close', onWsError);
-        
-        websocket.addEventListener('connection', function() {
-          console.log('Connected to the websocket server.', websocket.ros.socket.url);
-          if (reconnectTimer) clearInterval(reconnectTimer)
-          rviz.ros = websocket.ros;
-        });
-        websocket.connect();
+        websocket.addEventListener('connection', wsEventHandler);
+        websocket.addEventListener('error', wsEventHandler);
+        websocket.addEventListener('close', wsEventHandler);
 
         rviz.addEventListener('websocket-url-changed', function(evt) {
-          console.log('websocket-url-changed', evt.detail.value);
           if (websocket.url === evt.detail.value) return false
+          console.log('websocket-url-changed', evt.detail.value);
           websocket.url = evt.detail.value;
           websocket.connect();
         });
+        websocket.connect();
       });
     </script>
     <script>
