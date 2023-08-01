@@ -10,6 +10,7 @@
         padding: 0;
         margin: 0;
         height: 100%;
+        background-color: #333333;
       }
     </style>
 
@@ -23,7 +24,8 @@
 window.addEventListener('WebComponentsReady', function () {
   document.body.style.opacity = 1;
   var websocket = document.getElementById('websocket');
-  var rviz = document.getElementById('rviz'); // Set default ws url according to URL params
+  var rviz = document.getElementById('rviz');
+  var reconnectTimer = undefined; // Set default ws url according to URL params
   // A feature for jupyterhub or other service not run locally or on root path
 
   const baseUrl = new URLSearchParams(document.location.search).get("baseurl");
@@ -34,50 +36,59 @@ window.addEventListener('WebComponentsReady', function () {
     websocket.url = wsUrl.href + 'proxy/9090';
   }
 
-  function onWsError(evt) {
-    console.log(websocket.ros.socket.url, evt.type); // Todos: Add reconnect feature or display connection status
+  function wsEventHandler(evt) {
+    console.log(websocket.ros.socket.url, evt);
 
-    if (evt.type === 'close') {
-      setTimeout(_ => {
-        websocket.connect();
-      }, 10000);
+    switch (evt.type) {
+      case 'close':
+        clearInterval(reconnectTimer);
+        reconnectTimer = setTimeout(_ => {
+          // websocket.connect();
+          document.location.reload();
+        }, 3000);
+        break;
+
+      case 'connection':
+        clearInterval(reconnectTimer);
+        rviz.ros = websocket.ros;
+        break;
+
+      default:
+        console.log(evt.type);
     }
   }
 
-  websocket.addEventListener('error', onWsError);
-  websocket.addEventListener('close', onWsError);
-  websocket.addEventListener('connection', function () {
-    console.log('Connected to the websocket server.', websocket.ros.socket.url);
-    rviz.ros = websocket.ros;
-  });
-  websocket.connect();
+  websocket.addEventListener('connection', wsEventHandler);
+  websocket.addEventListener('error', wsEventHandler);
+  websocket.addEventListener('close', wsEventHandler);
   rviz.addEventListener('websocket-url-changed', function (evt) {
     if (websocket.url === evt.detail.value) return false;
-    console.log(evt.detail.value);
+    console.log('websocket-url-changed', evt.detail.value);
     websocket.url = evt.detail.value;
     websocket.connect();
   });
+  websocket.connect();
 });</script>
-    <script>
-      // Add FPS monitor
-      (function(){
-        var script=document.createElement('script');
-        script.onload = function(){
-          var stats=new Stats();
-          // stats.dom.style.top='auto';
-          stats.dom.style.left='auto';
-          stats.dom.style.right='0';
-          // stats.dom.style.bottom='0';
-          document.body.appendChild(stats.dom);
-          requestAnimationFrame(function loop(){
-            stats.update();
-            requestAnimationFrame(loop)
-          });
-        };
-        script.src='https://mrdoob.github.io/stats.js/build/stats.min.js';
-        document.head.appendChild(script);
-      })()
-    </script>
+    <script>// Add FPS monitor
+(function () {
+  var script = document.createElement('script');
+
+  script.onload = function () {
+    var stats = new Stats();
+    stats.dom.style.top = 'auto';
+    stats.dom.style.left = 'auto';
+    stats.dom.style.right = '0';
+    stats.dom.style.bottom = '0';
+    document.body.appendChild(stats.dom);
+    requestAnimationFrame(function loop() {
+      stats.update();
+      requestAnimationFrame(loop);
+    });
+  };
+
+  script.src = 'https://mrdoob.github.io/stats.js/build/stats.min.js';
+  document.head.appendChild(script);
+})();</script>
 
 
 

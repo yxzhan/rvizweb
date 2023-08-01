@@ -1,0 +1,109 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="imports.html">
+
+<dom-module id="ros-rviz-urdf">
+  <template>
+    <paper-input label="Robot description topic" value="{{param}}"></paper-input>
+    <paper-input label="TF prefix" value="{{tfPrefix}}"></paper-input>
+  </template>
+  <script>Polymer({
+  is: 'ros-rviz-urdf',
+  properties: {
+    name: {
+      type: String,
+      value: 'Robot model'
+    },
+    param: {
+      type: String,
+      value: 'robot_description',
+      notify: true
+    },
+    tfPrefix: {
+      type: String,
+      value: '',
+      notify: true
+    },
+    globalOptions: Object,
+    isShown: Boolean,
+    ros: Object,
+    tfClient: Object,
+    viewer: Object,
+    _urdf: Object
+  },
+  observers: ['_optionsChanged(param, tfPrefix, tfClient, ros, globalOptions.colladaServer)'],
+  destroy: function () {// Nothing to destroy.
+  },
+  hide: function () {
+    if (this.viewer) {
+      this.viewer.scene.remove(this._urdf);
+    }
+  },
+  show: function () {
+    if (this.viewer && this.isShown) {
+      this.viewer.addObject(this._urdf);
+    }
+  },
+  _optionsChanged: function (param, tfClient, ros, colladaServer) {
+    var that = this;
+    this.debounce('updateForOptions', function () {
+      that.hide();
+
+      that._updateDisplay(function () {
+        that.show();
+      });
+    }, 1000);
+  },
+  _updateDisplay: function (callback) {
+    if (!(this.ros && this.tfClient && this.param && this.globalOptions.colladaServer)) {
+      return;
+    }
+
+    var getParam = new ROSLIB.Param({
+      ros: this.ros,
+      name: this.param
+    });
+    var that = this;
+    getParam.get(function (string) {
+      var urdfModel = new ROSLIB.UrdfModel({
+        string: string
+      });
+      var loader = ROS3D.COLLADA_LOADER;
+      that.hide();
+      that._urdf = new ROS3D.Urdf({
+        urdfModel: urdfModel,
+        path: that.globalOptions.colladaServer,
+        tfClient: that.tfClient,
+        tfPrefix: that.tfPrefix,
+        loader: loader,
+        defaultColorMaterialFuc: function () {
+          let colorStr = that.globalOptions.defaultColorMaterial || '';
+          let defalutAlpha = 0.8; // Random color 
+
+          if (!!~colorStr.toLowerCase().indexOf('random')) {
+            let rFunc = Math.random;
+            let alpha = parseFloat(colorStr.toLowerCase().split('random')[1]);
+            alpha = isNaN(alpha) ? defalutAlpha : alpha;
+            return new ROS3D.makeColorMaterial(rFunc(), rFunc(), rFunc(), alpha);
+          } // Hex value
+
+
+          if (colorStr.startsWith("#")) {
+            let hexColor = colorStr.slice(1);
+            let red = parseInt(hexColor.substr(0, 2), 16) / 255;
+            let green = parseInt(hexColor.substr(2, 2), 16) / 255;
+            let blue = parseInt(hexColor.substr(4, 2), 16) / 255;
+            let alpha = parseInt(hexColor.substr(6, 2), 16) / 255;
+            alpha = isNaN(alpha) ? defalutAlpha : alpha;
+            return new ROS3D.makeColorMaterial(red, green, blue, alpha);
+          } // Default is white
+
+
+          return new ROS3D.makeColorMaterial(1, 1, 1, defalutAlpha);
+        }
+      });
+      callback && callback();
+    });
+  }
+});</script>
+</dom-module>
