@@ -11,5 +11,11 @@
     "title": "Ros Graph",
     "icon": "proxy/8001/rvizweb/webapps/ros-node-graph/icon.svg",
     "url": "proxy/8001/rvizweb/webapps/ros-node-graph/build/index.html"
+  },
+  {
+    "name": "webviz",
+    "title": "Webviz",
+    "icon": "proxy/8001/rvizweb/webapps/webviz/icon.svg",
+    "url": "proxy/8001/rvizweb/webapps/webviz/index.html"
   }
 ]
