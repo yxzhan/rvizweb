@@ -44,7 +44,7 @@ execute_process(
   COMMAND tar zxvf webviz.tar.gz
 )
 
-execute_process(
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  COMMAND rm ./www && ln -s ./webapps/rvizweb/build/www ./www
-)
+# execute_process(
+#   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+#   COMMAND ln -s ./webapps/rvizweb/build/www ./www
+# )

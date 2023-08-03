@@ -1,0 +1,12 @@
+- git:
+    local-name: rvizweb
+    uri: https://github.com/yxzhan/rvizweb.git
+    version: 0.2.1
+- git:
+    local-name: interactive_marker_proxy
+    uri: https://github.com/dragandbot/interactive_marker_proxy.git
+    version: bundle/v2.0.2
+- git: 
+    local-name: rosboard
+    uri: https://github.com/yxzhan/rosboard.git
+    version: main
