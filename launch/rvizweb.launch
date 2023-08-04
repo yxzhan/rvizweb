@@ -16,6 +16,9 @@
   <!-- Set to false to prevent republishing TF -->
   <arg name="tf" default="true"/>
 
+  <!-- Set to false to prevent republishing TF -->
+  <arg name="rosboard" default="true"/>
+
   <!-- Set to false if you don't want to use interactive markers. -->
   <arg name="interactive_markers" default="false"/>
   <!-- Target frame for interactive markers. -->
@@ -56,6 +59,11 @@
   <!-- TF2 republisher -->
   <group if="$(arg tf)">
     <node name="tf2_web_republisher" pkg="tf2_web_republisher" type="tf2_web_republisher" respawn="false" output="screen"/>
+  </group>
+
+  <!-- RosBoard -->
+  <group if="$(arg rosboard)">
+    <include file="$(find rosboard)/launch/rosboard.launch"></include>
   </group>
   
   <!-- Interactive markers -->
