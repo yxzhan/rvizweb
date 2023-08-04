@@ -1,7 +1,7 @@
 - git:
     local-name: rvizweb
     uri: https://github.com/yxzhan/rvizweb.git
-    version: 0.2.1
+    version: master
 - git:
     local-name: interactive_marker_proxy
     uri: https://github.com/dragandbot/interactive_marker_proxy.git
