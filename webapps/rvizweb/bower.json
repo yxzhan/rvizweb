@@ -18,6 +18,6 @@
     "threejs": "https://raw.githubusercontent.com/mrdoob/three.js/r89/build/three.min.js",
     "eventemitter2": "^6.4.0",
     "ros-rviz": "https://github.com/yxzhan/polymer-ros-rviz.git",
-    "ros3djs": "https://raw.githubusercontent.com/yxzhan/ros3djs/master/build/ros3d.min.js"
+    "ros3djs": "https://raw.githubusercontent.com/yxzhan/ros3djs/develop/build/ros3d.min.js"
   }
 }
