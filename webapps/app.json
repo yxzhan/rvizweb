@@ -2,17 +2,19 @@
   {
     "name": "rvizweb",
     "title": "Rvizweb",
-    "icon": "proxy/8001/rvizweb/webapps/icon.svg",
+    "icon": "proxy/8001/rvizweb/webapps/r.svg",
     "url": "proxy/8001/rvizweb/webapps/rvizweb/build/www/index.html"
   },
   {
     "name": "rosgraph",
     "title": "Ros Graph",
+    "icon": "proxy/8001/rvizweb/webapps/o.svg",
     "url": "proxy/8001/rvizweb/webapps/ros-node-graph/build/index.html"
   },
   {
     "name": "rosboard",
     "title": "ROSBoard",
+    "icon": "proxy/8001/rvizweb/webapps/s.svg",
     "url": "proxy/18888/index.html"
   },
   {
