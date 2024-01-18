@@ -459,7 +459,7 @@ Example:
       rate: 10.0
     });
 
-    if (this.globalConfigListener !== undefined) {
+    if (this.globalConfigListener === undefined) {
       this.globalConfigListener = new ROSLIB.Topic({
         ros: this.ros,
         name: '/rvizweb/global_config',
