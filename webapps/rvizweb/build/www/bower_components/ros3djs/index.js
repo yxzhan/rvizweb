@@ -95,7 +95,7 @@ var ROS3D = function (exports, THREE$1, ROSLIB, EventEmitter2) {
     if (a <= 0.99) {
       return new THREE.MeshBasicMaterial({
         color: color.getHex(),
-        opacity: a + 0.1,
+        opacity: a,
         transparent: true,
         depthWrite: true,
         blendSrc: THREE.SrcAlphaFactor,
