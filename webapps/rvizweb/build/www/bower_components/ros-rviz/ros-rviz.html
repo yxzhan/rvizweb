@@ -467,9 +467,7 @@ Example:
       });
       this.globalConfigListener.subscribe(function (message) {
         console.log(message);
-        setTimeout(function () {
-          document.location.reload();
-        }, 300)
+        that._getConfig();
       });
     }
 
