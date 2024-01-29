@@ -90,7 +90,8 @@
       ros: this.ros,
       name: this.topic,
       messageType: 'visualization_msgs/MarkerArray',
-      compression: 'png'
+      compression: 'png',
+      throttle_rate: 100
     });
 
     this._topic.subscribe(function (arrayMessage) {
