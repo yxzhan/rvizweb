@@ -91,7 +91,7 @@
       name: this.topic,
       messageType: 'visualization_msgs/MarkerArray',
       compression: 'png',
-      throttle_rate: 100
+      throttle_rate: 30
     });
 
     this._topic.subscribe(function (arrayMessage) {
