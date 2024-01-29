@@ -68,7 +68,8 @@
       name: this.topic,
       messageType: 'visualization_msgs/Marker',
       compression: 'png',
-      throttle_rate: 30
+      queue_size: 30,
+      throttle_rate: 50
     });
 
     this._topic.subscribe(function (message) {
