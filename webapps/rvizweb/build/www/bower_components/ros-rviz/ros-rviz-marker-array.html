@@ -91,8 +91,8 @@
       name: this.topic,
       messageType: 'visualization_msgs/MarkerArray',
       compression: 'png',
-      queue_size: 30,
-      throttle_rate: 50
+      // queue_size: 30,
+      // throttle_rate: 50
     });
 
     this._topic.subscribe(function (arrayMessage) {
