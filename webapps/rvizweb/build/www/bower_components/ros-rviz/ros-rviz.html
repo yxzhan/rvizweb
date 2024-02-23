@@ -298,6 +298,9 @@ Example:
         height: height,
         antialias: true
       });
+      this._viewer.directionalLight.position.x = -10
+      this._viewer.directionalLight.position.y = -10
+      this._viewer.directionalLight.position.z = 50
       document.getElementById = backupFunc;
       this._attached = true;
     });
@@ -536,7 +539,7 @@ Example:
 
     return config;
   },
-  // Apply 3d scene config
+  // Apply ros3d viewer config
   _applyViewerOptions: function (opts) {
     if (!opts) return;
 
